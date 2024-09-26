@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Create New Candidate
+{% endblock %}
+
+{% block content %}
+    <h1>Create a New Candidate</h1>
+    <form action="{{ url_for('views.create_candidate') }}" method="POST">
+        <div class="form-group">
+            <label for="name">Candidate Name:</label>
+            <input type="text" id="name" name="name" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="party">Party:</label>
+            <input type="text" id="party" name="party" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" class="form-control"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create Candidate</button>
+    </form>
+{% endblock %}

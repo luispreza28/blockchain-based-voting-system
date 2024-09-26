@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Voter Registration Success
+{% endblock %}
+
+{% block content %}
+    <h1>Keys Regenerated successfully!</h1>
+    <p>Your private key has been regenerated. <a href="{{ download_link_private }}">Download Private Key</a></p>
+    <p>Your public key has been regenerated. <a href="{{ download_link_public }}">Download Public Key</a></p>
+{% endblock %}

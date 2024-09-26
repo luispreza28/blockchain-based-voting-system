@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}
+Verify OTP
+{% endblock %}
+
+{% block content %}
+<div class="otp-container">
+    <h1>OTP has been sent to your email.</h1>
+    <h2>Enter the OTP</h2>
+    <form action="{{ url_for('auth.verify_otp') }}" method="POST">
+        <div class="form-group">
+            <label for="otp">One-Time Password (OTP)</label>
+            <input type="text" id="otp" name="otp" required>
+        </div>
+
+        <input type="hidden" name="purpose" value="{{ session['otp_purpose'] }}">
+
+        <div class="form-group">
+            <button type="submit" class="btn">Verify OTP</button>
+        </div>
+    </form>
+    <form action="{{ url_for('auth.generate_otp', purpose=session['otp_purpose']) }}" method="GET">
+        <div class="form-group">
+            <label for="otp">Didn't receive OTP? Click the button below to receive another OTP</label>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn">Generate New OTP</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}
+<h1>Results</h1>
+<p><strong>Winner:</strong> {{ winner }}</p>
+{% endblock %}
+
+{% block content %}
+{% if result_message %}
+<h1>{{result_message}}</h1>
+{% endif %}
+<h3>Vote counts:</h3>
+<ul>
+{% for candidate in candidates %}
+    <li>{{ candidate.name }}:{{ candidate.votes }} votes</li>
+{% endfor %}
+</ul>
+
+{% if current_user.is_admin %}
+<form action="{{ url_for('views.end_poll') }}" method="POST">
+    <button type="submit" class="btn btn-danger">End Poll</button>
+</form>
+{% endif %}
+{% endblock %}

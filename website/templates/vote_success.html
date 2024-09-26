@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Casted Vote Successfully
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Thank You for Voting!</h1>
+    <p>Your vote has been successfully cast.</p>
+    <a href="{{ url_for('views.index') }}" class="btn">Return Home</a>
+</div>
+{% endblock %}

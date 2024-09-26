@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Regenerate Keys
+{% endblock %}
+
+{% block content %}
+    <h1>Click the link below to regenerate your keys:</h1>
+    <form action="{{ url_for('auth.regenerate_keys') }}" method="post">
+        <button type="submit">Regenerate Key</button>
+    </form>
+{% endblock %}

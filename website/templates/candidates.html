@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}
+<h1>Candidates</h1>
+{% endblock %}
+
+{% block content %}
+<ul>
+    {% for candidate in candidates %}
+        <li>{{ candidate.name }} - {{ candidate.party }}: {{ candidate.description }}: {{ candidate.votes }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

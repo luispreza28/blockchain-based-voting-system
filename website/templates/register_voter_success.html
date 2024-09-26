@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Voter Registration Success
+{% endblock %}
+
+{% block content %}
+    <h1>Registration Successful</h1>
+    <p>Your account has been created successfully. Click the link below to download your private key:</p>
+    <a href="{{ download_link_private }}">Download Private Key</a>
+    <a href="{{ download_link_public }}">Download Public Key</a>
+{% endblock %}

@@ -1,0 +1,11 @@
+hashlib
+flask~=3.0.3
+web3.py
+Crypto~=1.4.1
+requests~=2.32.3
+pyotp~=2.9.0
+Werkzeug~=3.0.3
+cryptography~=3.4.8
+python-dotenv~=1.0.1
+alembic~=1.13.2
+SQLAlchemy~=2.0.34
