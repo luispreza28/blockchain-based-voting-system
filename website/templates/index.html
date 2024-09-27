@@ -1,41 +1,46 @@
 {% extends "base.html" %}
 
 {% block title %}
-Home - My flask app
+Home - Blockchain Voting System
 {% endblock %}
 
 {% block content %}
     <!-- Hero Section -->
-    <header class="hero">
-        <div class="bg-primary text-white text-center p-5">
-            <h1>Secure, Transparent, and Decentralized Voting</h1>
-            <p>Experience the future of voting with our blockchain-powered system.</p>
-            <a href="{{ url_for('views.register_voter') }}" class="btn btn-light btn-lg">Register to Vote</a>
-        </div>
+    <header class="hero bg-light text-dark text-center p-5">
+        <h1>Secure, Transparent, and Decentralized Voting</h1>
+        <p class="lead">Experience the future of voting with our blockchain-powered system.</p>
+        {% if not user_authenticated %}
+            <a href="{{ url_for('views.register_voter') }}" class="btn btn-primary btn-lg">Register to Vote</a>
+        {% else %}
+            <p class="text-warning">You are already registered to the website!</p>
+        {% endif %}
     </header>
 
-    <!-- Features Section -->
-     <!-- Full-width banner -->
-    <section class="bg-primary text-white text-center p-5">
-        <h1>Welcome to Your Voting Platform</h1>
-        <p class="lead">Secure, decentralized voting powered by blockchain</p>
-        <a href="{{ url_for('views.register_voter') }}" class="btn btn-light btn-lg">Get Started</a>
+    <!-- Welcome Section -->
+    <section class="text-center p-5">
+        <div class="bg-white shadow-sm text-dark p-5 rounded">
+            <h2>Welcome to Your Voting Platform</h2>
+            <p class="lead">Secure, decentralized voting powered by blockchain technology</p>
+        </div>
     </section>
 
-    <!-- Main content -->
-    <div class="container mt-5">
-        <div class="row">
+    <!-- Information Sections -->
+    <div class="container my-5">
+        <div class="row text-center">
             <div class="col-md-4">
+                <i class="fas fa-lock fa-3x mb-3 text-primary"></i>
                 <h3>About Us</h3>
-                <p>Learn more about how blockchain technology ensures the security and privacy of your votes.</p>
+                <p>Discover how blockchain technology ensures the security and privacy of your votes.</p>
             </div>
             <div class="col-md-4">
+                <i class="fas fa-balance-scale fa-3x mb-3 text-primary"></i>
                 <h3>Why Choose Us?</h3>
-                <p>Our platform is designed for transparency, ease of use, and a modern voting experience.</p>
+                <p>Our platform offers transparency, ease of use, and a modern voting experience.</p>
             </div>
             <div class="col-md-4">
+                <i class="fas fa-users fa-3x mb-3 text-primary"></i>
                 <h3>Get Involved</h3>
-                <p>Register as a voter today to participate in upcoming elections.</p>
+                <p>Register as a voter today to participate in secure, decentralized elections.</p>
             </div>
         </div>
     </div>

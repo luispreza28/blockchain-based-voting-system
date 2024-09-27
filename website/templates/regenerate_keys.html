@@ -1,12 +1,20 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Regenerate Keys
+    <h1 class="text-center">Regenerate Keys</h1>
 {% endblock %}
 
 {% block content %}
-    <h1>Click the link below to regenerate your keys:</h1>
-    <form action="{{ url_for('auth.regenerate_keys') }}" method="post">
-        <button type="submit">Regenerate Key</button>
-    </form>
+    <section class="regenerate-keys">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="my-4">You can regenerate your keys here</h2>
+                <p class="lead">Click the button below to regenerate your keys. This action will provide you with new keys.</p>
+                <form action="{{ url_for('auth.regenerate_keys') }}" method="post">
+                    <button type="submit" class="btn btn-warning btn-lg">Regenerate Key</button>
+                </form>
+                <p class="mt-3"><a href="{{ url_for('views.index') }}">Go back to the homepage</a></p>
+            </div>
+        </div>
+    </section>
 {% endblock %}

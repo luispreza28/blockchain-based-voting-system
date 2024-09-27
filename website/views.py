@@ -20,7 +20,8 @@ key_manager = KeyManager()
 # Route for home
 @views.route('/', methods=['GET'])
 def index():
-    return render_template('index.html')
+    user_authenticated = current_user.is_authenticated
+    return render_template('index.html', user_authenticated=user_authenticated)
 
 
 @views.route('/register_voter', methods=['POST', 'GET'])
@@ -254,7 +255,7 @@ def end_poll():
 
     # Determine if it's a tie or a signale winner
     if len(winners) > 1:
-        result_message = "It's a tie between" + ', '.join([winner.name for winner in winners])
+        result_message = "It's a tie between " + ', '.join([winner.name for winner in winners])
     else:
         result_message = f"The winner is: {winners[0].name}"
 

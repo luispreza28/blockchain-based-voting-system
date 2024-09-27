@@ -67,7 +67,7 @@ def generate_otp(purpose):
         return jsonify({'message': 'Error in sending OTP mail'})
 
     # Store OTP and timestamp in the session
-    session['otp'] = otp
+    # session['otp'] = otp
     session['otp_timestamp'] = time.time()
     session['otp_purpose'] = purpose
 
@@ -80,13 +80,16 @@ def verify_otp():
         user_otp = request.form.get('otp')
 
         # Retrieve stored OTP and check its validity
-        session_otp = session.get('otp')
+        otp_secret = session.get('otp_secret')
         otp_timestamp = session.get('otp_timestamp')
         otp_purpose = session.get('otp_purpose')
 
         # Verify OTP
-        if user_otp == session_otp and time.time() - otp_timestamp < 300:
-            session['otp_verified'] = True  # Set OTP verification flag in the session
+        totp = pyotp.TOTP(otp_secret)
+        is_valid = totp.verify(user_otp, valid_window=1)
+
+        if is_valid:
+            session['otp_verified'] = True
 
             if otp_purpose == 'login':
                 # Get user id

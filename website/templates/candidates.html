@@ -1,13 +1,24 @@
 {% extends "base.html" %}
 
 {% block title %}
-<h1>Candidates</h1>
+    <h1 class="text-center my-4">Candidates</h1>
 {% endblock %}
 
 {% block content %}
-<ul>
-    {% for candidate in candidates %}
-        <li>{{ candidate.name }} - {{ candidate.party }}: {{ candidate.description }}: {{ candidate.votes }}</li>
-    {% endfor %}
-</ul>
+    <div class="container">
+        <div class="row">
+            {% for candidate in candidates %}
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ candidate.name }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ candidate.party }}</h6>
+                        <p class="card-text">{{ candidate.description }}</p>
+                        <p class="card-text"><strong>Votes:</strong> {{ candidate.votes }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

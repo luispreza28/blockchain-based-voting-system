@@ -1,12 +1,20 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Voter Registration Success
+    <h1>Registration Success</h1>
 {% endblock %}
 
 {% block content %}
-    <h1>Registration Successful</h1>
-    <p>Your account has been created successfully. Click the link below to download your private key:</p>
-    <a href="{{ download_link_private }}">Download Private Key</a>
-    <a href="{{ download_link_public }}">Download Public Key</a>
+    <section class="success-message">
+        <div class="container text-center">
+            <h2 class="my-4">Registration Successful!</h2>
+            <p class="lead">Your account has been created successfully. To ensure the security of your account, please download your keys below:</p>
+            <div class="key-links">
+                <a href="{{ download_link_private }}" class="btn btn-success">Download Private Key</a>
+                <a href="{{ download_link_public }}" class="btn btn-info">Download Public Key</a>
+            </div>
+            <p class="mt-4">Thank you for registering to vote! Your voice matters.</p>
+            <a href="{{ url_for('auth.login') }}" class="btn btn-primary mt-3">Log In</a>
+        </div>
+    </section>
 {% endblock %}

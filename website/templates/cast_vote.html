@@ -1,49 +1,57 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Cast Vote
+    <h1 class="text-center my-4">Cast Your Vote</h1>
 {% endblock %}
 
 {% block content %}
     <!-- Cast Vote Section -->
     <section class="cast-vote">
         <div class="container">
-            <h1>Cast Your Vote</h1>
-            <form action="{{ url_for('views.cast_vote') }}" method="POST">
-                <div class="form-group">
-                    <label for="candidate">Select Candidate:</label>
-                    <select id="candidate" name="candidate" required>
-                        <option value="">--Choose a Candidate--</option>
-                        {% for candidate in candidates %}
-                        <option value="{{ candidate.id }}">{{ candidate.name }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <form action="{{ url_for('views.cast_vote') }}" method="POST">
+                        <div class="form-group mb-3">
+                            <label for="candidate" class="form-label">Select Candidate:</label>
+                            <select id="candidate" name="candidate" class="form-select" required>
+                                <option value="" selected disabled>--Choose a Candidate--</option>
+                                {% for candidate in candidates %}
+                                <option value="{{ candidate.id }}">{{ candidate.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
 
-                <div class="form-group">
-                    <label for="public_key">Public Key:</label>
-                    <input type="text" id="public_key" name="public_key" placeholder="-----BEGIN PUBLIC KEY----- ... -----END PUBLIC KEY-----" required>
-                </div>
+                        <div class="form-group mb-3">
+                            <label for="public_key" class="form-label">Public Key:</label>
+                            <textarea id="public_key" name="public_key" class="form-control" rows="4" placeholder="-----BEGIN PUBLIC KEY----- ... -----END PUBLIC KEY-----" required></textarea>
+                        </div>
 
-                <div class="form-group">
-                    <label for="private_key">Private Key:</label>
-                    <input type="text" id="private_key" name="private_key" placeholder="-----BEGIN RSA KEY----- ... -----END RSA KEY-----" required>
-                </div>
+                        <div class="form-group mb-3">
+                            <label for="private_key" class="form-label">Private Key:</label>
+                            <textarea id="private_key" name="private_key" class="form-control" rows="4" placeholder="-----BEGIN RSA PRIVATE KEY----- ... -----END RSA PRIVATE KEY-----" required></textarea>
+                        </div>
 
-                <div class="form-group">
-                    <button type="submit" class="cta-button">Submit Vote</button>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg">Submit Vote</button>
+                        </div>
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
     </section>
-    <section class="cast-vote">
+
+    <!-- Regenerate Keys Section -->
+    <section class="mt-5">
         <div class="container">
-            <form action="{{ url_for('auth.regenerate_keys') }}" method="GET">
-                <div class="form-group">
-                    <h3>Don't remember your key? Click Button Below</h3>
-                    <button type="submit" class="cta-button">Regenerate Keys</button>
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center">
+                    <h3>Don't remember your key?</h3>
+                    <p class="lead">Click the button below to regenerate your keys.</p>
+                    <form action="{{ url_for('auth.regenerate_keys') }}" method="GET">
+                        <button type="submit" class="btn btn-secondary btn-lg">Regenerate Keys</button>
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
     </section>
 {% endblock %}

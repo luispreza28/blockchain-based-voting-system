@@ -1,33 +1,37 @@
 {% extends "base.html" %}
 
 {% block title %}
-<h1>Register To Vote Now</h1>
+    Register To Vote Now
 {% endblock %}
 
 {% block content %}
-    <div class="container">
-        <div class="registration-form">
-            <h2>Create an Account</h2>
-            <form action="/register_voter" method="post">
-                <div class="input-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" required>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-sm p-4">
+                    <h2 class="text-center mb-4">Create an Account</h2>
+                    <form action="/register_voter" method="post">
+                        <div class="form-group mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" id="username" name="username" class="form-control" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" id="password" name="password" class="form-control" required>
+                        </div>
+                        <div class="form-group mb-4">
+                            <label for="confirm-password" class="form-label">Confirm Password</label>
+                            <input type="password" id="confirm-password" name="confirm-password" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Register</button>
+                    </form>
+                    <p class="text-center mt-3">Already have an account? <a href="{{ url_for('auth.login') }}">Log in here</a></p>
                 </div>
-                <div class="input-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="input-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                <div class="input-group">
-                    <label for="confirm-password">Confirm Password</label>
-                    <input type="password" id="confirm-password" name="confirm-password" required>
-                </div>
-                <button type="submit">Register</button>
-            </form>
-            <p>Already have an account? <a href="{{ url_for('auth.login') }}">Log in here</a></p>
+            </div>
         </div>
     </div>
 {% endblock %}

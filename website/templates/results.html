@@ -1,24 +1,39 @@
 {% extends "base.html" %}
 
 {% block title %}
-<h1>Results</h1>
-<p><strong>Winner:</strong> {{ winner }}</p>
+    <h1 class="text-center my-4">Election Results</h1>
+    <p class="text-center"><strong>Winner:</strong> {{ winner }}</p>
 {% endblock %}
 
 {% block content %}
-{% if result_message %}
-<h1>{{result_message}}</h1>
-{% endif %}
-<h3>Vote counts:</h3>
-<ul>
-{% for candidate in candidates %}
-    <li>{{ candidate.name }}:{{ candidate.votes }} votes</li>
-{% endfor %}
-</ul>
+    <div class="container">
+        {% if result_message %}
+        <div class="alert alert-info text-center">
+            <h2>{{ result_message }}</h2>
+        </div>
+        {% endif %}
 
-{% if current_user.is_admin %}
-<form action="{{ url_for('views.end_poll') }}" method="POST">
-    <button type="submit" class="btn btn-danger">End Poll</button>
-</form>
-{% endif %}
+        <h3 class="text-center mb-4">Vote Counts</h3>
+
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <ul class="list-group">
+                    {% for candidate in candidates %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span>{{ candidate.name }}</span>
+                        <span class="badge bg-primary rounded-pill">{{ candidate.votes }} votes</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        {% if current_user.is_admin %}
+        <div class="text-center mt-4">
+            <form action="{{ url_for('views.end_poll') }}" method="POST">
+                <button type="submit" class="btn btn-danger">End Poll</button>
+            </form>
+        </div>
+        {% endif %}
+    </div>
 {% endblock %}

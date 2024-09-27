@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Casted Vote Successfully
+    <h1>Vote Successfully Cast</h1>
 {% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1>Thank You for Voting!</h1>
-    <p>Your vote has been successfully cast.</p>
-    <a href="{{ url_for('views.index') }}" class="btn">Return Home</a>
-</div>
+    <section class="success-message">
+        <div class="container text-center">
+            <h2 class="my-4">Thank You for Voting!</h2>
+            <p class="lead">Your vote has been successfully cast. Your participation is vital for a thriving democracy!</p>
+            <a href="{{ url_for('views.index') }}" class="btn btn-primary btn-lg">Return Home</a>
+        </div>
+    </section>
 {% endblock %}

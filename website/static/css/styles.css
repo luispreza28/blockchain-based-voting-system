@@ -1,187 +1,179 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
     margin: 0;
+}
+
+.hero {
+    color: white;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.btn-outline-light {
+    border-color: #ffffff;
+    color: #ffffff;
+}
+
+.btn-outline-light:hover {
+    background-color: #ffffff;
+    color: #007bff;
 }
 
 .container {
-    width: 100%;
     max-width: 1200px;
     padding: 20px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-.registration-form h2 {
-    text-align: center;
-    margin-bottom: 20px;
+h2 {
     color: #333;
 }
 
-.input-group {
-    margin-bottom: 15px;
-}
-
-.input-group label {
-    display: block;
-    margin-bottom: 5px;
-    color: #555;
-}
-
-.input-group input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
-}
-
-button[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    background-color: #5cb85c;
-    border: none;
-    border-radius: 4px;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-button[type="submit"]:hover {
-    background-color: #4cae4c;
-}
-
 p {
-    text-align: center;
-    color: black;
-    margin-top: 15px;
+    color: #666;
 }
 
-p a {
-    color: #5cb85c;
-    text-decoration: none;
+.text-primary {
+    color: #007bff !important;
 }
 
-p a:hover {
-    text-decoration: underline;
+.btn-primary {
+    background-color: #007bff;
+    border: none;
 }
 
-.navbar {
-    background-color: #333;
-    color: white;
-    padding: 15px 0;
+.btn-primary:hover {
+    background-color: #0056b3;
 }
 
-.navbar-menu {
-    float: right;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.navbar-item {
-    display: inline-block;
-    margin-left: 20px;
-}
-
-.navbar-item a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    transition: color 0.3s ease;
-}
-
-.navbar-item a:hover {
-    color: #ff6347;
-}
-
-.content {
-    padding: 20px;
+i {
+    color: #007bff;
 }
 
 footer {
     background-color: #333;
     color: white;
+    padding: 20px 0;
     text-align: center;
-    padding: 10px 0;
-    margin-top: 30px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }
 
 .login-container {
-    width: 300px;
-    margin: 100px auto;
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+}
+
+.login-box {
+    background-color: #ffffff;
+    padding: 40px;
+    border-status: 10px;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
     text-align: center;
 }
 
-.login-container h2 {
-    margin-bottom: 20px;
-    font-size: 24px;
+.login-title {
+    font-size: 28;
+    margin-bottom: 10px;
     color: #333;
+    font-weight: bold;
+}
+
+.login-subtitle {
+    color: #777;
+    margin-bottom: 30px;
+    font-size: 14px;
 }
 
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     text-align: left;
 }
 
 .form-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
+    font-weight: 600;
     color: #333;
 }
 
 .form-group input {
     width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
+    padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 5px;
     font-size: 16px;
+    margin-top: 5px;
 }
 
-.form-group .btn {
+.btn-primary {
     width: 100%;
-    padding: 10px;
-    background-color: #333;
+    background-color: #007bff;
     color: white;
+    padding: 10px;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
-.form-group .btn:hover {
-    background-color: #ff6347;
+.btn-primary:hover {
+    background-color: #0056b3;
 }
 
-.login-container p {
+.login-footer {
     margin-top: 20px;
-    color: #666;
+    color: #777;
 }
 
-.login-container a {
-    color: #ff6347;
+.login-footer a {
+    color: #007bff;
     text-decoration: none;
+}
+
+.login-footer a:hover {
+    text-decoration: underline;
+}
+
+.card {
+    border-radius: 10px;
+    border: none;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-title {
     font-weight: bold;
 }
 
-ul.flashes {
-    list-style: none;
-    padding: 0;
+.card-text {
+    color: #555;
 }
-ul.flashes .error {
-    color: red;
+
+.container {
+    margin-top: 20px;
 }
-ul.flashes .success {
-    color: green;
+
+.list-group-item {
+    font-size: 1.2rem;
+}
+
+.alert {
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+.badge {
+    font-size: 1rem;
 }

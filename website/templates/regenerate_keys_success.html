@@ -1,11 +1,23 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Voter Registration Success
+    <h1 class="text-center">Key Regeneration Success</h1>
 {% endblock %}
 
 {% block content %}
-    <h1>Keys Regenerated successfully!</h1>
-    <p>Your private key has been regenerated. <a href="{{ download_link_private }}">Download Private Key</a></p>
-    <p>Your public key has been regenerated. <a href="{{ download_link_public }}">Download Public Key</a></p>
+    <section class="success-message">
+        <div class="container text-center">
+            <h2 class="my-4">Keys Regenerated Successfully!</h2>
+            <p class="lead">Your keys have been successfully regenerated. Please download them using the links below:</p>
+            <div class="key-links">
+                <p>
+                    <a href="{{ download_link_private }}" class="btn btn-success btn-lg">Download Private Key</a>
+                </p>
+                <p>
+                    <a href="{{ download_link_public }}" class="btn btn-info btn-lg">Download Public Key</a>
+                </p>
+            </div>
+            <p class="mt-4"><a href="{{ url_for('views.index') }}">Return to Home</a></p>
+        </div>
+    </section>
 {% endblock %}
