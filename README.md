@@ -1,8 +1,8 @@
-Blockchain-based Voting System
-Overview
+## Blockchain-based Voting System
+## Overview
 This project is a Blockchain-based Voting System designed to provide a secure, transparent, and decentralized way of conducting elections. By leveraging blockchain technology, this system ensures that all votes are recorded in a tamper-proof manner, enhancing both trust and integrity in the voting process.
 
-Features
+## Features
 Blockchain Security: Every vote is securely encrypted and recorded on the blockchain, making it immutable and transparent.
 Decentralization: No single entity controls the system, reducing the risk of fraud or tampering.
 Anonymous Voting: Voters’ identities are protected, ensuring privacy while still maintaining transparency in vote counting.
@@ -12,13 +12,12 @@ Technologies Used
 Blockchain Technology: Provides the core framework for the system's security and transparency.
 Smart Contracts: Used to enforce voting rules and automate vote counting without the need for intermediaries.
 Python: Backend logic and interaction with the blockchain.
-Web3.js: JavaScript framework for interacting with Ethereum blockchain.
-HTML/CSS/JavaScript: Frontend of the voting portal for users.
+HTML/CSS: Frontend of the voting portal for users.
 Solidity: Used for writing smart contracts on the Ethereum network.
 Project Setup
 Prerequisites
 Python 3.x
-Node.js and npm
+npm
 MetaMask browser extension for interacting with Ethereum blockchain
 Ganache (or any Ethereum test network)
 Installation
@@ -26,19 +25,19 @@ Clone the repository:
 
 bash
 Copy code
-git clone https://github.com/luispreza28/blockchain-based-voting-system.git
+``` git clone https://github.com/luispreza28/blockchain-based-voting-system.git ```
 Navigate to the project directory:
 
 bash
 Copy code
-cd blockchain-based-voting-system
+``` cd blockchain-based-voting-system ```
 Install dependencies:
 
 Backend (Python):
 
 bash
 Copy code
-pip install -r requirements.txt
+``` pip install -r requirements.txt ```
 Frontend:
 
 bash
@@ -48,17 +47,17 @@ Start the blockchain (Ganache or other Ethereum testnet):
 
 bash
 Copy code
-ganache-cli
+``` ganache-cli ```
 Deploy the Smart Contract to the Blockchain:
 
 bash
 Copy code
-truffle migrate --network development
+``` truffle migrate --network development ```
 Run the application:
 
 bash
 Copy code
-python app.py
+``` python app.py ```
 Access the application by visiting http://localhost:5000 in your browser.
 
 Usage
