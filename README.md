@@ -1,75 +1,96 @@
-## Blockchain-based Voting System
-## Overview
-This project is a Blockchain-based Voting System designed to provide a secure, transparent, and decentralized way of conducting elections. By leveraging blockchain technology, this system ensures that all votes are recorded in a tamper-proof manner, enhancing both trust and integrity in the voting process.
+# Voting Application
 
-## Features
-Blockchain Security: Every vote is securely encrypted and recorded on the blockchain, making it immutable and transparent.
-Decentralization: No single entity controls the system, reducing the risk of fraud or tampering.
-Anonymous Voting: Voters’ identities are protected, ensuring privacy while still maintaining transparency in vote counting.
-Easy Access: Voters can cast their ballots from any location using a secure online portal.
-Real-time Results: The system provides instant and verifiable results upon the conclusion of the voting period.
-Technologies Used
-Blockchain Technology: Provides the core framework for the system's security and transparency.
-Smart Contracts: Used to enforce voting rules and automate vote counting without the need for intermediaries.
-Python: Backend logic and interaction with the blockchain.
-HTML/CSS: Frontend of the voting portal for users.
-Solidity: Used for writing smart contracts on the Ethereum network.
-Project Setup
-Prerequisites
-Python 3.x
-npm
-MetaMask browser extension for interacting with Ethereum blockchain
-Ganache (or any Ethereum test network)
-Installation
-Clone the repository:
+## Introduction
+This Voting Application enables users to securely register as voters, cast their votes, and view election results. Built on a blockchain framework, the application ensures the integrity and transparency of the voting process. Utilizing RSA encryption for securing user data and votes, the app also implements a two-factor authentication (2FA) mechanism to enhance security.
+
+## Installation
+
+## Prerequisites
+Make sure you have Python 3.x installed on your machine.
+
+Step 1: Clone the Repository
+```bash git clone <repository_url> cd voting_application```
+
+## Step 2: Create a Virtual Environment
+bash
+Copy code
+```python -m venv venv```
+source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+
+## Step 3: Install Required Packages
+Install the necessary Python packages using pip:
 
 bash
 Copy code
-``` git clone https://github.com/luispreza28/blockchain-based-voting-system.git ```
-Navigate to the project directory:
+``` pip install Flask Flask-SQLAlchemy Flask-Mail python-dotenv pyotp pycryptodome ```
+
+## Step 4: Set Up Environment Variables
+Create a .env file in the root of the project and add the following:
+
+makefile
+Copy code
+SECRET_KEY=<your_secret_key>
+MAIL_USERNAME=<your_email>
+MAIL_PASSWORD=<your_email_password>
+
+## Step 5: Database Setup
+The application uses SQLite for storing user and voting data. The database will be created automatically if it doesn't already exist. To initialize the database, run:
 
 bash
 Copy code
-``` cd blockchain-based-voting-system ```
-Install dependencies:
+```python -c "from your_application import create_app; app = create_app(); with app.app_context(): from your_application.models import db; db.create_all()"```
 
-Backend (Python):
+## Key Features
+## Voter Registration
+Users can register by providing a username, email, and password.
+Upon registration, an RSA key pair is generated. The public key is registered on the blockchain, while the private key can be downloaded securely.
+
+### Vote Casting
+Voters log in using their credentials and an OTP sent to their email.
+Users can select a candidate and sign their vote using their RSA private key.
+The application validates the user's keys and stores the vote securely on the blockchain.
+
+### Results and Poll Reset
+After the poll is closed, results can be declared based on the votes recorded in the blockchain.
+The system handles ties and declares winners accordingly.
+Once results are declared, the voting data is reset for the next election cycle.
+### Blueprints and Routes
+The application is structured using Flask blueprints. Below are some of the primary routes:
+
+Authentication Routes
+/auth/login: User login with OTP verification.
+/auth/logout: Logout the current user.
+/auth/regenerate_keys: Regenerate RSA keys with OTP verification.
+Voting Routes
+/: Home page, showing user authentication status.
+/register_voter: Voter registration page.
+/cast_vote: Page for casting votes, available only to logged-in users who haven't voted.
+/results: View the election results.
+/add_candidate: Endpoint for adding candidates, accessible to admins only.
+
+## Admin Functionality
+Admins have special privileges:
+
+/give_admin/<username>: Grant admin rights to a user.
+/end_poll: Close the voting and reset for the next poll.
+Error Handling and Flash Messages
+The application provides user feedback through flash messages, which notify users of various events, such as:
+
+## Invalid login credentials.
+OTP verification issues.
+Successful actions like voter registration and vote casting.
+
+## How to Run the Application
+To run the application, set the necessary environment variables and use the following commands:
 
 bash
 Copy code
-``` pip install -r requirements.txt ```
-Frontend:
+```export FLASK_APP=your_application```  # Replace with your application's entry point
+```export FLASK_ENV=development```
+```flask run```
+Access the application in your web browser at http://127.0.0.1:5000.
 
-bash
-Copy code
-npm install
-Start the blockchain (Ganache or other Ethereum testnet):
+## Conclusion
+This Voting Application demonstrates the use of blockchain technology for secure voting. With enhanced security measures such as RSA encryption and OTP verification, it aims to provide a trustworthy platform for conducting elections.
 
-bash
-Copy code
-``` ganache-cli ```
-Deploy the Smart Contract to the Blockchain:
-
-bash
-Copy code
-``` truffle migrate --network development ```
-Run the application:
-
-bash
-Copy code
-``` python app.py ```
-Access the application by visiting http://localhost:5000 in your browser.
-
-Usage
-Voter Registration: Voters will register using their Ethereum address.
-Voting Process: Voters can cast their vote for the desired candidate.
-Result Viewing: Once voting is complete, the results will be displayed and are verifiable on the blockchain.
-Smart Contracts
-Voting.sol: Handles the election process including voter registration, vote casting, and vote counting.
-Ownership.sol: Manages the ownership of the voting process and ensures that only authorized users can start or stop elections.
-Future Enhancements
-Integration with a mobile app for easier access.
-Support for multiple elections on the same blockchain platform.
-Scalability to support large-scale national elections.
-Contributing
-Feel free to submit pull requests or open issues to improve the project. Contributions are welcome!
+For further questions or contributions, feel free to open an issue or submit a pull request.
