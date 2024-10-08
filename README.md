@@ -41,7 +41,7 @@ Copy code
 ```python -c "from your_application import create_app; app = create_app(); with app.app_context(): from your_application.models import db; db.create_all()"```
 
 ## Key Features
-## Voter Registration
+### Voter Registration
 Users can register by providing a username, email, and password.
 Upon registration, an RSA key pair is generated. The public key is registered on the blockchain, while the private key can be downloaded securely.
 
@@ -68,7 +68,7 @@ Voting Routes
 /results: View the election results.
 /add_candidate: Endpoint for adding candidates, accessible to admins only.
 
-## Admin Functionality
+### Admin Functionality
 Admins have special privileges:
 
 /give_admin/<username>: Grant admin rights to a user.
@@ -76,11 +76,11 @@ Admins have special privileges:
 Error Handling and Flash Messages
 The application provides user feedback through flash messages, which notify users of various events, such as:
 
-## Invalid login credentials.
+### Invalid login credentials.
 OTP verification issues.
 Successful actions like voter registration and vote casting.
 
-## How to Run the Application
+### How to Run the Application
 To run the application, set the necessary environment variables and use the following commands:
 
 bash
