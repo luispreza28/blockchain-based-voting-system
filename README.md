@@ -9,35 +9,27 @@ This Voting Application enables users to securely register as voters, cast their
 Make sure you have Python 3.x installed on your machine.
 
 Step 1: Clone the Repository
-```bash git clone <repository_url> cd voting_application```
+```git clone <repository_url> cd voting_application```
 
 ## Step 2: Create a Virtual Environment
-bash
-Copy code
-```python -m venv venv```
-source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+
+```python -m venv venv source venv/bin/activate```  # On Windows use `venv\Scripts\activate`
 
 ## Step 3: Install Required Packages
 Install the necessary Python packages using pip:
 
-bash
-Copy code
 ``` pip install Flask Flask-SQLAlchemy Flask-Mail python-dotenv pyotp pycryptodome ```
 
 ## Step 4: Set Up Environment Variables
 Create a .env file in the root of the project and add the following:
 
-makefile
-Copy code
-SECRET_KEY=<your_secret_key>
-MAIL_USERNAME=<your_email>
-MAIL_PASSWORD=<your_email_password>
+- SECRET_KEY=<your_secret_key>
+- MAIL_USERNAME=<your_email>
+- MAIL_PASSWORD=<your_email_password>
 
 ## Step 5: Database Setup
 The application uses SQLite for storing user and voting data. The database will be created automatically if it doesn't already exist. To initialize the database, run:
 
-bash
-Copy code
 ```python -c "from your_application import create_app; app = create_app(); with app.app_context(): from your_application.models import db; db.create_all()"```
 
 ## Key Features
@@ -54,37 +46,38 @@ The application validates the user's keys and stores the vote securely on the bl
 After the poll is closed, results can be declared based on the votes recorded in the blockchain.
 The system handles ties and declares winners accordingly.
 Once results are declared, the voting data is reset for the next election cycle.
-### Blueprints and Routes
-The application is structured using Flask blueprints. Below are some of the primary routes:
 
-Authentication Routes
-/auth/login: User login with OTP verification.
-/auth/logout: Logout the current user.
-/auth/regenerate_keys: Regenerate RSA keys with OTP verification.
-Voting Routes
-/: Home page, showing user authentication status.
-/register_voter: Voter registration page.
-/cast_vote: Page for casting votes, available only to logged-in users who haven't voted.
-/results: View the election results.
-/add_candidate: Endpoint for adding candidates, accessible to admins only.
+# Blueprints and Routes
+## The application is structured using Flask blueprints. Below are some of the primary routes:
 
-### Admin Functionality
-Admins have special privileges:
+### Authentication Routes
+- /auth/login: User login with OTP verification.
+- /auth/logout: Logout the current user.
+- /auth/regenerate_keys: Regenerate RSA keys with OTP verification.
 
-/give_admin/<username>: Grant admin rights to a user.
-/end_poll: Close the voting and reset for the next poll.
-Error Handling and Flash Messages
-The application provides user feedback through flash messages, which notify users of various events, such as:
+### Voting Routes
+- /: Home page, showing user authentication status.
+- /register_voter: Voter registration page.
+- /cast_vote: Page for casting votes, available only to logged-in users who haven't voted.
+- /results: View the election results.
+- /add_candidate: Endpoint for adding candidates, accessible to admins only.
 
-### Invalid login credentials.
-OTP verification issues.
-Successful actions like voter registration and vote casting.
+## Admin Functionality
+### Admins have special privileges:
 
-### How to Run the Application
-To run the application, set the necessary environment variables and use the following commands:
+- /give_admin/<username>: Grant admin rights to a user.
+- /end_poll: Close the voting and reset for the next poll.
 
-bash
-Copy code
+## Error Handling and Flash Messages
+- The application provides user feedback through flash messages, which notify users of various events, such as:
+
+## Invalid login credentials.
+- OTP verification issues.
+- Successful actions like voter registration and vote casting.
+
+## How to Run the Application
+### To run the application, set the necessary environment variables and use the following commands:
+
 ```export FLASK_APP=your_application```  # Replace with your application's entry point
 ```export FLASK_ENV=development```
 ```flask run```
