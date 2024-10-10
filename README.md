@@ -8,7 +8,8 @@ This Voting Application enables users to securely register as voters, cast their
 ## Prerequisites
 Make sure you have Python 3.x installed on your machine.
 
-Step 1: Clone the Repository
+## Step 1: Clone the Repository
+
 ```git clone <repository_url> cd voting_application```
 
 ## Step 2: Create a Virtual Environment
